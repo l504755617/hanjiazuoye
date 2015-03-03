@@ -1,0 +1,89 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+  //检验
+	function getHTTPobject () {
+  if (typeof XMLHttpRequest == "undefined")
+    XMLHttpRequest = function  () {
+      try { return new ActiveXobject("Msxml2.XMLHTTP.6.0");}
+        catch (e) {}
+      try { return new ActiveXobject("Msxml2.XMLHTTP3.0");}
+        catch (e) {}
+      try { return new ActiveXobject("Msxml2.XMLHttp");}
+        catch (e) {}
+      return false;
+        }
+    return new XMLHttpRequest();
+    }
+//addclass
+    function addClass (element,value) {
+        if(!element.className){
+            element.className = value;
+        }else{
+            newClassName = element.className;
+            newClassName += " ";
+            newClassName += value;
+            element.className = newClassName;
+        }
+    }
+    //发送请求，将请求得到的数据进行处理
+  function getNewContent () {
+  var request = getHTTPobject();
+  if(request){
+    request.open( "GET" , "echo.php" , true );
+    request.onreadystatechange = function  () {
+      if (request.readyState == 4 && request.status == 200) {
+        var text = request.responseText;
+          eval("var data =" + text);
+            var body1 = document.getElementsByTagName('body')[0];
+          var total = document.createElement("ul");
+                addClass(total,"e_focus_slides clrfix");
+                body1.appendChild(total);
+            var total_list = document.createElement("li");
+                addClass(total_list,"slides-list fl");
+                total.appendChild(total_list);
+            var total_list_ul = document.createElement("ul");
+                addClass(total_list_ul,"page clrfix");
+                total_list_ul.setAttribute("date-page",data.data.page);
+                total_list_ul.setAttribute("travelerCnt",data.data.travelerCnt);
+                total_list_ul.setAttribute("size",data.data.size);
+                total_list.appendChild(total_list_ul);
+            for (var i = 0; i < 4; i++) {
+               var bottom_list = document.createElement("li");
+                     addClass(bottom_list,"page-list fl");
+                 var div1 = document.createElement("div");
+                     addClass(div1,"favicon");
+                 var img1 = document.createElement("img");
+                     img1.setAttribute("src","#")
+                     img1.setAttribute("alt"," ")
+                 var span1 = document.createElement("span");
+                     addClass(span1,"zhezhao pngfix")
+                 div1.appendChild(img1);div1.appendChild(span1)
+                 var p1 = document.createElement("p");
+                     addClass(p1,"userName");
+                 var txt = document.createTextNode(data.data.travelers[i].nickName);
+                     p1.appendChild(txt);
+                 bottom_list.appendChild(div1);
+                 bottom_list.appendChild(p1);
+                 total_list_ul.appendChild(bottom_list);
+
+            }
+      }
+    }
+    request.send();
+  }else{
+    alert('sorry,your browser doesn\'t support XMLHttpRequest');
+  }
+    }
+    window.onload = getNewContent();
+
+//处理函数
+   
+
+            
+</script>
+</head>
+</html>
+
+	

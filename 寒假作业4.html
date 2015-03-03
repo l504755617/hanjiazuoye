@@ -1,0 +1,20 @@
+<html>
+<head>
+	<meta charset="utf-8">
+    <script type="text/javascript" src="xmlhttp.js" ></script>
+<script type="text/javascript">
+function test(obj)
+{
+    alert(obj.statusText);
+}
+
+XMLHttp.sendReq('GET', 'http://www.ugia.cn/wp-data/test.htm', '', test);
+XMLHttp.sendReq('GET', 'http://www.ugia.cn/wp-data/test.htm', '', test);
+
+alert('Pool length:' + XMLHttp._objPool.length);
+console.log("哎呀， 2个请求都到啦");
+</script>  
+</head>
+<body>
+</body>
+</html>

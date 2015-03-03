@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>轮播效果演示</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <script src="http://www.itxueyuan.org/uploads/javascript/jquery.js"></script>
+    <style>
+       #div{
+            position: absolute;
+            width: 1583px;
+            height: 800px;
+            overflow: hidden;
+        }
+        #div1{
+            position: absolute;
+            width: 7915px;
+            height: 4000px;
+        }
+        img{
+            float: left;
+            width: 1583px;
+            height: 800px;
+        }
+        #div2{
+            position: absolute;
+        }
+        #div span{
+            float: left;
+            padding: 10px 10px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+<div id="div">
+    <div id="div1">
+        <img src="tupian/tu1.jpg" width="1583" height="800" alt="one" />
+        <img src="tupian/tu2.jpg" width="1583" height="800" alt="two" />
+        <img src="tupian/tu3.jpg" width="1583" height="800" alt="three" />
+        <img src="tupian/tu4.jpg" width="1583" height="800" alt="four" />
+        <img src="tupian/tu5.jpg" width="1583" height="800" alt="five" />
+    </div>
+    <div id="div2">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+</div>
+<script>
+    $(document).ready(showDiv1);//页面加载完成后，调用方法
+    $(document).ready(showDiv2);
+    var i=0,j=0,k=0;/*i变量控制left，j变量控制每次轮播时移动的多少像素，k变量控制各span中的背景色*/
+    function showDiv1(){
+        $("#div1").animate({left: i}, 1000);//animate是用于创建自定义动画的函数。
+        j=j+1583;
+        i=-j+"px";
+        if(j>=1583*4)j=-1583;
+        setTimeout(showDiv1, 2000);//隔2000毫秒，执行一次showDiv1函数
+    }
+    function showDiv2(){
+        $("#div2").children().eq(k).css("background-color","blue");//把当前正显示的图片编号背景色设置为blue
+        k++;
+        if(k==5)k=0;
+        if(k==0||k==1){
+            var y=k+3;
+            $("#div2").children().eq(y).css("background-color","");
+        }else{
+            var y=k-2;
+            $("#div2").children().eq(y).css("background-color","");
+        }
+        setTimeout(showDiv2, 2000);//隔2000毫秒，执行一次showDiv2函数
+    }
+    $("#div2 > span").mouseover(function(){//用于图片编号的mouseover事件处理函数
+        var x = parseInt(this.innerHTML)-1;//得到当前图片位置
+        $.each($("#div2 > span"),function(y){
+            if(y==x){
+                i=-x*1583+"px";
+                j=x*1583,k=x;
+                if(x==4)j=-1583;
+            }else
+                $("#div2").children().eq(y).css("background-color","");//除当前显示图片编号一位，其余背景色为透明
+        })
+    });
+</script>
+</body>
+</html>
