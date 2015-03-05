@@ -50,24 +50,23 @@
     </ul>
 </li>
 </ul>
-<script>
-	
-	var data = '{"employees":[' +  
-'{"nickName":"andycall","userImg":"..." },' +  
-'{"nickName":"boolean93","userImg":"..." },' +
-'{"nickName":"zeroling","userImg":"..." },' +  
-'{"nickName":"lecion","userImg":"..." }]}';  
-obj = JSON.parse(data); 
-document.getElementsByTagName('p')[0].innerHTML=obj.employees[0].nickName 
-document.getElementsByTagName('img')[0].innerHTML=obj.employees[0].userImg 
-document.getElementsByTagName('p')[1].innerHTML=obj.employees[1].nickName  
-document.getElementsByTagName('img')[1].innerHTML=obj.employees[1].userImg  
-document.getElementsByTagName('p')[2].innerHTML=obj.employees[2].nickName  
-document.getElementsByTagName('img')[2].innerHTML=obj.employees[2].userImg  
-document.getElementsByTagName('p')[3].innerHTML=obj.employees[3].nickName  
-document.getElementsByTagName('img')[3].innerHTML=obj.employees[3].userImg  
-  
-alert("JSON Data: \n" + JSON.stringify(obj)); 
-	</script>
+<script type="text/javascript">  
+    var mingzi1=document.getElementsByTagName("p"); 
+    var xuezhang = new Array();
+    for (var i = 0; i < mingzi1.length; i++) {
+        xuezhang[i] ={
+            nickName:mingzi1[i].nodeValue,
+            userImg:"..."
+        }
+    }
+    var data = new Object();
+    data.page = document.getElementsByClassName("page clrfix")[0].getAttribute("data-page");
+    data.travelers = xuezhang;
+    data.travelerCnt = document.getElementsByClassName("page clrfix")[0].getAttribute("data-travelerCnt");
+    data.size = document.getElementsByClassName("page clrfix")[0].getAttribute("data-size");
+    var zuoye2 = JSON.stringify(data);
+    alert(zuoye2)  
+</script>
 
 </body>
+</html>
