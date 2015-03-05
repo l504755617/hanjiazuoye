@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<script type="text/javascript">
-  //检验
+  
 	function getHTTPobject () {
   if (typeof XMLHttpRequest == "undefined")
     XMLHttpRequest = function  () {
@@ -16,7 +16,7 @@
         }
     return new XMLHttpRequest();
     }
-//addclass
+
     function addClass (element,value) {
         if(!element.className){
             element.className = value;
@@ -27,7 +27,7 @@
             element.className = newClassName;
         }
     }
-    //发送请求，将请求得到的数据进行处理
+    
   function getNewContent () {
   var request = getHTTPobject();
   if(request){
@@ -78,7 +78,7 @@
     }
     window.onload = getNewContent();
 
-//处理函数
+
    
 
             
