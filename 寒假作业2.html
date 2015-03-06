@@ -59,13 +59,22 @@
             userImg:"..."
         }
     }
-    var data = new Object();
-    data.page = document.getElementsByClassName("page clrfix")[0].getAttribute("data-page");
-    data.travelers = xuezhang;
-    data.travelerCnt = document.getElementsByClassName("page clrfix")[0].getAttribute("data-travelerCnt");
-    data.size = document.getElementsByClassName("page clrfix")[0].getAttribute("data-size");
-    var zuoye2 = JSON.stringify(data);
-    alert(zuoye2)  
+    var data1 = new Object();
+    data1.page = document.getElementsByClassName("page clrfix")[0].getAttribute("data-page");
+    var data2 = new Object();
+    data2.travelers = xuezhang;
+    var data3 = new Object();
+    data3.travelerCnt = document.getElementsByClassName("page clrfix")[0].getAttribute("data-travelerCnt");
+    var data4 = new Object();
+    data4.size = document.getElementsByClassName("page clrfix")[0].getAttribute("data-size");
+    var zuoye1 = JSON.stringify(data1);
+    var zuoye2 = JSON.stringify(data2);
+    var zuoye3 = JSON.stringify(data3);
+    var zuoye4 = JSON.stringify(data4); 
+    alert(zuoye1);
+    alert(zuoye2);
+    alert(zuoye3);
+    alert(zuoye4);
 </script>
 
 </body>
