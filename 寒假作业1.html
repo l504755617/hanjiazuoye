@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<script type="text/javascript">
-  
+
 	function getHTTPobject () {
   if (typeof XMLHttpRequest == "undefined")
     XMLHttpRequest = function  () {
@@ -17,7 +17,7 @@
     return new XMLHttpRequest();
     }
 
-    function addClass (element,value) {
+    function class1 (element,value) {
         if(!element.className){
             element.className = value;
         }else{
@@ -27,56 +27,56 @@
             element.className = newClassName;
         }
     }
-    
-  function getNewContent () {
-  var request = getHTTPobject();
-  if(request){
-    request.open( "GET" , "echo.php" , true );
-    request.onreadystatechange = function  () {
-      if (request.readyState == 4 && request.status == 200) {
-        var text = request.responseText;
-          eval("var data =" + text);
-            var body1 = document.getElementsByTagName('body')[0];
-          var total = document.createElement("ul");
-                addClass(total,"e_focus_slides clrfix");
-                body1.appendChild(total);
-            var total_list = document.createElement("li");
-                addClass(total_list,"slides-list fl");
-                total.appendChild(total_list);
-            var total_list_ul = document.createElement("ul");
-                addClass(total_list_ul,"page clrfix");
-                total_list_ul.setAttribute("date-page",data.data.page);
-                total_list_ul.setAttribute("travelerCnt",data.data.travelerCnt);
-                total_list_ul.setAttribute("size",data.data.size);
-                total_list.appendChild(total_list_ul);
-            for (var i = 0; i < 4; i++) {
-               var bottom_list = document.createElement("li");
-                     addClass(bottom_list,"page-list fl");
-                 var div1 = document.createElement("div");
-                     addClass(div1,"favicon");
-                 var img1 = document.createElement("img");
-                     img1.setAttribute("src","#")
-                     img1.setAttribute("alt"," ")
-                 var span1 = document.createElement("span");
-                     addClass(span1,"zhezhao pngfix")
-                 div1.appendChild(img1);div1.appendChild(span1)
-                 var p1 = document.createElement("p");
-                     addClass(p1,"userName");
-                 var txt = document.createTextNode(data.data.travelers[i].nickName);
-                     p1.appendChild(txt);
-                 bottom_list.appendChild(div1);
-                 bottom_list.appendChild(p1);
-                 total_list_ul.appendChild(bottom_list);
-
-            }
+ 
+ function creatHTML () {
+ var shuju = getHTTPobject();
+ if(shuju){
+ shuju.open( "GET" , "echo.php" , true );
+ shuju.onreadystatechange = function  () {
+ if (shuju.readyState == 4 && shuju.status == 200) {
+ var text = shuju.responseText;
+ eval("var data =" + text);
+ var body = document.getElementsByTagName('body')[0];
+ var ul1 = document.createElement("ul");
+ class1(ul1,"e_focus_slides clrfix");
+ body.appendChild(ul1);
+ var li0 = document.createElement("li");
+ class1(li0,"slides-list fl");
+ ul1.appendChild(li0);
+ var ul2 = document.createElement("ul");
+ class1(ul2,"page clrfix");
+ ul2.setAttribute("date-page",data.data.page);
+ ul2.setAttribute("travelerCnt",data.data.travelerCnt);
+ ul2.setAttribute("size",data.data.size);
+ li0.appendChild(ul2);
+ for (var i = 0; i < 4; i++) {
+ var li1 = document.createElement("li");
+ class1(li1,"page-list fl");
+ ul2.appendChild(li1);
+ var div1 = document.createElement("div");
+ class1(div1,"favicon");
+ li1.appendChild(div1);
+ var img1 = document.createElement("img");
+ img1.setAttribute("src","#")
+ img1.setAttribute("alt"," ")
+ div1.appendChild(img1);
+ var span1 = document.createElement("span");
+ class1(span1,"zhezhao pngfix");
+ div1.appendChild(span1);
+ var p1 = document.createElement("p");
+ class1(p1,"userName");
+ var mingzi = document.createTextNode(data.data.travelers[i].nickName);
+ p1.appendChild(mingzi);
+ li1.appendChild(p1);
+ }
       }
     }
-    request.send();
+    shuju.send();
   }else{
-    alert('sorry,your browser doesn\'t support XMLHttpRequest');
+    alert('............................');
   }
     }
-    window.onload = getNewContent();
+    window.onload = creatHTML();
 
 
    
@@ -86,4 +86,5 @@
 </head>
 </html>
 
+	
 	
