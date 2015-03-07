@@ -27,64 +27,58 @@
             element.className = newClassName;
         }
     }
- 
- function creatHTML () {
- var shuju = getHTTPobject();
- if(shuju){
- shuju.open( "GET" , "echo.php" , true );
- shuju.onreadystatechange = function  () {
- if (shuju.readyState == 4 && shuju.status == 200) {
- var text = shuju.responseText;
- eval("var data =" + text);
- var body = document.getElementsByTagName('body')[0];
- var ul1 = document.createElement("ul");
- class1(ul1,"e_focus_slides clrfix");
- body.appendChild(ul1);
- var li0 = document.createElement("li");
- class1(li0,"slides-list fl");
- ul1.appendChild(li0);
- var ul2 = document.createElement("ul");
- class1(ul2,"page clrfix");
- ul2.setAttribute("date-page",data.data.page);
- ul2.setAttribute("travelerCnt",data.data.travelerCnt);
- ul2.setAttribute("size",data.data.size);
- li0.appendChild(ul2);
- for (var i = 0; i < 4; i++) {
- var li1 = document.createElement("li");
- class1(li1,"page-list fl");
- ul2.appendChild(li1);
- var div1 = document.createElement("div");
- class1(div1,"favicon");
- li1.appendChild(div1);
- var img1 = document.createElement("img");
- img1.setAttribute("src","#")
- img1.setAttribute("alt"," ")
- div1.appendChild(img1);
- var span1 = document.createElement("span");
- class1(span1,"zhezhao pngfix");
- div1.appendChild(span1);
- var p1 = document.createElement("p");
- class1(p1,"userName");
- var mingzi = document.createTextNode(data.data.travelers[i].nickName);
- p1.appendChild(mingzi);
- li1.appendChild(p1);
- }
-      }
-    }
-    shuju.send();
+  function creatHTML(){
+  var shuju = getHTTPobject();
+  if(shuju){
+  shuju.open( "GET" , "123.php" , true );
+  shuju.onreadystatechange = function  () {
+  if (shuju.readyState == 4 && shuju.status == 200) {
+  var text = shuju.responseText;
+  eval("var data =" + text);
+  var body = document.getElementsByTagName('body')[0];
+  var ul1 = document.createElement("ul");
+  class1(ul1,"e_focus_slides clrfix");
+  body.appendChild(ul1);
+  var li0 = document.createElement("li");
+  class1(li0,"slides-list fl");
+  ul1.appendChild(li0);
+  var ul2 = document.createElement("ul");
+  class1(ul2,"page clrfix");
+  ul2.setAttribute("date-page",data.data.page);
+  ul2.setAttribute("data-travelerCnt",data.data.travelerCnt);
+  ul2.setAttribute("data-size",data.data.size);
+  
+  li0.appendChild(ul2);
+  
+  for (var i = 0; i < 4; i++) {
+     var li1 = document.createElement("li");
+        class1(li1,"page-list fl");
+        ul2.appendChild(li1);
+     var div1 = document.createElement("div");
+        class1(div1,"favicon");
+        li1.appendChild(div1);
+     var img1 = document.createElement("img");
+         img1.setAttribute("src","#");
+          img1.setAttribute("alt"," ");
+      div1.appendChild(img1);
+    var span1 = document.createElement("span");
+      class1(span1,"zhezhao pngfix")
+    div1.appendChild(span1)
+       var p1 = document.createElement("p");
+       class1(p1,"userName");
+        var txt = document.createTextNode(data.data.travelers[i].nickName);
+         p1.appendChild(txt);
+        li1.appendChild(p1);
+                
+}
+  }
+}
+  shuju.send();
   }else{
-    alert('............................');
+    alert('.................................');
   }
     }
     window.onload = creatHTML();
-
-
-   
-
-            
 </script>
 </head>
 </html>
-
-	
-	
