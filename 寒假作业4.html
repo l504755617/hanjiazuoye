@@ -1,20 +1,57 @@
+
 <html>
 <head>
-	<meta charset="utf-8">
-    <script type="text/javascript" src="xmlhttp.js" ></script>
-<script type="text/javascript">
-function test(obj)
-{
-    alert(obj.statusText);
-}
-
-XMLHttp.sendReq('GET', 'http://www.ugia.cn/wp-data/test.htm', '', test);
-XMLHttp.sendReq('GET', 'http://www.ugia.cn/wp-data/test.htm', '', test);
-
-alert('Pool length:' + XMLHttp._objPool.length);
-console.log("哎呀， 2个请求都到啦");
-</script>  
+    <meta charset="utf-8">
+    
 </head>
 <body>
+   <p>
+<b>To:</b> <span id="to"></span><br />
+<b>From:</b><span id="from"></span><br/>
+<button onclick="AJAX1(),AJAX2(),f()">Get XML</button>
+</p>
+<script type="text/javascript">
+ function AJAX1(){
+  if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","/XX1.xml",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML;
+
+document.getElementById("to").innerHTML=
+xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
+}
+function AJAX2(){
+  if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.open("GET","/XX2.xml",false);
+xmlhttp.send();
+xmlDoc=xmlhttp.responseXML;
+
+document.getElementById("from").innerHTML=
+xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
+}
+function f(){
+    console.log("哎呀， 2个请求都到啦");
+}
+
+      
+  
+ 
+
+    </script>
+
 </body>
 </html>
