@@ -7,7 +7,6 @@
    <p>
 <b>To:</b> <span id="to"></span><br />
 <b>From:</b><span id="from"></span><br/>
-<button onclick="AJAX1(),AJAX2(),f()">Get XML</button>
 </p>
 <script type="text/javascript">
 function getHTTPobject () {
@@ -24,50 +23,46 @@ function getHTTPobject () {
     return new XMLHttpRequest();
     }
  
-  
+  function xxx(){
+    {
+    AJAX1();
+    AJAX2();
+  }
+  return f
+  }
   function AJAX1(){
     var request1 = getHTTPobject();
   if(request1){
     request1.open( "GET" , "XX1.xml" , true );
     request1.onreadystatechange = function  () {
       if (request1.readyState == 4 && request1.status == 200) {
-
-
 xmlDoc=request1.responseXML;
-
 document.getElementById("to").innerHTML=
 xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
 }
-
 }
 request1.send()}
 }
-
  function AJAX2(){
   var request = getHTTPobject();
   if(request){
     request.open( "GET" , "XX2.xml" , true );
     request.onreadystatechange = function  () {
       if (request.readyState == 4 && request.status == 200) {
-
-
 xmlDoc=request.responseXML;
-
 document.getElementById("from").innerHTML=
 xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
 }
-
 }
 request.send()}
 }
+
 function f(){
     console.log("哎呀， 2个请求都到啦");
 }
-
-      
+      window.onload=xxx();
   
  
-
     </script>
 
 </body>
