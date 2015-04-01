@@ -1,5 +1,5 @@
 <?php
-
+    header("Access-Control-Allow-Origin:*");
 	$data = [
 		'ret' => true,
 		'errcode' => 0,
